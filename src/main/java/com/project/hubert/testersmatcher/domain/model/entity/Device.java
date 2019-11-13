@@ -15,6 +15,6 @@ public class Device {
     @Column(name = "id")
     private Long deviceId;
 
-    @Column(name = "description", nullable = false)
-    private String description;
+    @Column(name = "description", nullable = false, unique = true)
+    private String name;
 }

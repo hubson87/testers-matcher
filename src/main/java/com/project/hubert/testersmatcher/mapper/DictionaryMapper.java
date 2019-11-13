@@ -9,13 +9,13 @@ public class DictionaryMapper {
         if (country == null) {
             return null;
         }
-        return DictionaryItem.builder().code(country.getCountryCode()).id(country.getId()).build();
+        return DictionaryItem.builder().code(country.getCountryCode()).name(country.getCountryCode()).build();
     }
 
     public static DictionaryItem fromDevice(Device device) {
         if (device == null) {
             return null;
         }
-        return DictionaryItem.builder().code(device.getDescription()).id(device.getDeviceId()).build();
+        return DictionaryItem.builder().code(device.getName()).name(device.getName()).build();
     }
 }

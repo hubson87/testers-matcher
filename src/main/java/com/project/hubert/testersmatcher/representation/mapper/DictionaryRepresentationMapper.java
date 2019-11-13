@@ -16,7 +16,7 @@ public class DictionaryRepresentationMapper {
         }
         return dictionaryItems.stream()
                 .map(di -> DictionaryItemRepresentation.builder()
-                        .id(di.getId())
+                        .name(di.getName())
                         .code(di.getCode())
                         .build())
                 .collect(Collectors.toList());

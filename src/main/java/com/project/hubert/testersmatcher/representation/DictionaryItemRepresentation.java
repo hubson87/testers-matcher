@@ -6,6 +6,6 @@ import lombok.Getter;
 @Getter
 @Builder
 public class DictionaryItemRepresentation {
-    public final Long id;
     public final String code;
+    public final String name;
 }

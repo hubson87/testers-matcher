@@ -5,5 +5,5 @@ import com.project.hubert.testersmatcher.domain.model.TesterSummaryAccumulator;
 import java.util.List;
 
 public interface StatisticService {
-    List<TesterSummaryAccumulator> getStatistics(List<Long> countryIds, List<Long> deviceIds);
+    List<TesterSummaryAccumulator> getStatistics(List<String> countryCodes, List<String> deviceNames);
 }

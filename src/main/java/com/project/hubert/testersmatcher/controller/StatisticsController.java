@@ -21,8 +21,8 @@ public class StatisticsController {
     }
 
     @GetMapping
-    public List<StatisticsRepresentation> getStatistics(@RequestParam(value = "countryIds", required = false) List<Long> countries,
-                                                        @RequestParam(value = "deviceIds", required = false) List<Long> devices) {
+    public List<StatisticsRepresentation> getStatistics(@RequestParam(value = "countryCodes", required = false) List<String> countries,
+                                                        @RequestParam(value = "deviceNames", required = false) List<String> devices) {
         return StatisticsRepresentationMapper.fromAccumulators(statisticService.getStatistics(countries, devices));
     }
 }

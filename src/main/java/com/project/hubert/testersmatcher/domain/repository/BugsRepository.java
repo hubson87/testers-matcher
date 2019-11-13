@@ -17,9 +17,9 @@ public interface BugsRepository extends JpaRepository<Bug, Long> {
             "       count(distinct b.device)," +
             "       count(b)) " +
             "from Bug b " +
-            "where (:countries is null or b.tester.country.id in :countries) " +
-            "and (:devices is null or b.device.deviceId in :devices) " +
+            "where ((:countries) is null or b.tester.country.countryCode in :countries) " +
+            "and ((:devices) is null or b.device.name in :devices) " +
             "group by b.tester " +
             "order by count(b) desc")
-    List<TesterSummaryAccumulator> findBugsByTesterCountryIdsAndDeviceIds(@Param("countries") List<Long> countryIds, @Param("devices") List<Long> deviceIds);
+    List<TesterSummaryAccumulator> findBugsByTesterCountryIdsAndDeviceIds(@Param("countries") List<String> countries, @Param("devices") List<String> devices);
 }

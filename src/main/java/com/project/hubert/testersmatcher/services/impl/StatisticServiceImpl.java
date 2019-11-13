@@ -17,9 +17,9 @@ public class StatisticServiceImpl implements StatisticService {
     }
 
     @Override
-    public List<TesterSummaryAccumulator> getStatistics(List<Long> countryIds, List<Long> deviceIds) {
-        List<Long> countries = CollectionUtils.isEmpty(countryIds) ? null : countryIds;
-        List<Long> devices = CollectionUtils.isEmpty(deviceIds) ? null : deviceIds;
+    public List<TesterSummaryAccumulator> getStatistics(List<String> countryCodes, List<String> deviceNames) {
+        List<String> countries = CollectionUtils.isEmpty(countryCodes) ? null : countryCodes;
+        List<String> devices = CollectionUtils.isEmpty(deviceNames) ? null : deviceNames;
 
         return bugsRepository.findBugsByTesterCountryIdsAndDeviceIds(countries, devices);
     }
