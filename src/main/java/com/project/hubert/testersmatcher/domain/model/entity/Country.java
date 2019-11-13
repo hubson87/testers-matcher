@@ -1,4 +1,4 @@
-package com.project.hubert.testersmatcher.domain.model;
+package com.project.hubert.testersmatcher.domain.model.entity;
 
 import lombok.Data;
 

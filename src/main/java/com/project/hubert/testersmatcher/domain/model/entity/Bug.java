@@ -1,4 +1,4 @@
-package com.project.hubert.testersmatcher.domain.model;
+package com.project.hubert.testersmatcher.domain.model.entity;
 
 import lombok.Data;
 
@@ -12,7 +12,11 @@ public class Bug {
     @Column(name = "id")
     private Long bugId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "device_id")
     private Device device;
+
+    @ManyToOne
+    @JoinColumn(name = "tester_id")
+    private Tester tester;
 }

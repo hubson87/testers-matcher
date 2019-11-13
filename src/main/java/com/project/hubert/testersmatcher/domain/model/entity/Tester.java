@@ -1,13 +1,16 @@
-package com.project.hubert.testersmatcher.domain.model;
+package com.project.hubert.testersmatcher.domain.model.entity;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = {"lastLogin", "bugs", "devices"})
+@ToString(exclude = "bugs")
 @Entity
 @Table(name = "tester")
 public class Tester {
@@ -34,7 +37,6 @@ public class Tester {
         inverseJoinColumns = @JoinColumn(name = "device_id"))
     private Set<Device> devices = new HashSet<>();
 
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "tester_id")
+    @OneToMany(orphanRemoval = true, fetch = FetchType.EAGER, mappedBy = "tester")
     private Set<Bug> bugs = new HashSet<>();
 }

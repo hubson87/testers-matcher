@@ -1,5 +1,6 @@
 package com.project.hubert.testersmatcher.initializer;
 
+import com.project.hubert.testersmatcher.domain.repository.BugsRepository;
 import com.project.hubert.testersmatcher.domain.repository.TestersRepository;
 import com.project.hubert.testersmatcher.initializer.csv.CsvColumnsReader;
 import com.project.hubert.testersmatcher.initializer.jpa.DbInitializer;
@@ -25,6 +26,8 @@ public class BootInitializer implements CommandLineRunner {
 
     @Resource
     TestersRepository testersRepository;
+    @Resource
+    BugsRepository bugsRepository;
 
     public BootInitializer(CsvColumnsReader columnsReader, DbInitializer dbInitializer) {
         this.columnsReader = columnsReader;
