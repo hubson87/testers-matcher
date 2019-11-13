@@ -1,11 +1,11 @@
-package com.project.hubert.testersmatcher.domain.model;
+package com.project.hubert.testersmatcher.representation;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
-@AllArgsConstructor
+@Builder
 @Getter
-public class TesterSummaryAccumulator {
+public class StatisticsRepresentation {
     private final String testerFirstName;
     private final String testerLastName;
     private final String country;

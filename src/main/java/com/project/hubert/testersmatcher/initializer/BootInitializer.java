@@ -35,7 +35,7 @@ public class BootInitializer implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         List<Map<String, String>> parsedTesters = columnsReader.readCsv(PATH_PRX + "/testers.csv");
         List<Map<String, String>> parsedDevices = columnsReader.readCsv(PATH_PRX + "/devices.csv");
         List<Map<String, String>> parsedTesterDevices = columnsReader.readCsv(PATH_PRX + "/tester_device.csv");
