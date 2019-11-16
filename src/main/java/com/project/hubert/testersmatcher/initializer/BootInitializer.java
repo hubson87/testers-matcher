@@ -1,7 +1,5 @@
 package com.project.hubert.testersmatcher.initializer;
 
-import com.project.hubert.testersmatcher.domain.repository.BugsRepository;
-import com.project.hubert.testersmatcher.domain.repository.TestersRepository;
 import com.project.hubert.testersmatcher.initializer.csv.CsvColumnsReader;
 import com.project.hubert.testersmatcher.initializer.jpa.DbInitializer;
 import lombok.extern.log4j.Log4j2;
@@ -9,7 +7,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,11 +20,6 @@ public class BootInitializer implements CommandLineRunner {
 
     private CsvColumnsReader columnsReader;
     private DbInitializer dbInitializer;
-
-    @Resource
-    TestersRepository testersRepository;
-    @Resource
-    BugsRepository bugsRepository;
 
     public BootInitializer(CsvColumnsReader columnsReader, DbInitializer dbInitializer) {
         this.columnsReader = columnsReader;

@@ -12,11 +12,11 @@ public class Bug {
     @Column(name = "id")
     private Long bugId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "device_id")
     private Device device;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "tester_id")
     private Tester tester;
 }

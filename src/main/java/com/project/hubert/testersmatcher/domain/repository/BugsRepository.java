@@ -11,6 +11,7 @@ import java.util.List;
 public interface BugsRepository extends JpaRepository<Bug, Long> {
     @Query("select " +
             "new com.project.hubert.testersmatcher.domain.model.TesterSummaryAccumulator(" +
+            "       b.tester.id," +
             "       b.tester.firstName, " +
             "       b.tester.lastName," +
             "       b.tester.country.countryCode," +
