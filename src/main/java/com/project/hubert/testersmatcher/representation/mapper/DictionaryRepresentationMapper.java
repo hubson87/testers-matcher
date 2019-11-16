@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DictionaryRepresentationMapper {
-    public static List<DictionaryItemRepresentation> fromDictionary(List<DictionaryItem> dictionaryItems) {
+    private static List<DictionaryItemRepresentation> fromDictionary(List<DictionaryItem> dictionaryItems) {
         if (CollectionUtils.isEmpty(dictionaryItems)) {
             return new ArrayList<>();
         }

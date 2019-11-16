@@ -1,7 +1,6 @@
 package com.project.hubert.testersmatcher.representation.mapper;
 
 import com.project.hubert.testersmatcher.domain.model.TesterSummaryAccumulator;
-import com.project.hubert.testersmatcher.exceptions.NotFoundException;
 import com.project.hubert.testersmatcher.representation.StatisticsRepresentation;
 import org.springframework.util.CollectionUtils;
 
@@ -11,7 +10,7 @@ import java.util.List;
 public class StatisticsRepresentationMapper {
     public static List<StatisticsRepresentation> fromAccumulators(List<TesterSummaryAccumulator> accumulators) {
         if (CollectionUtils.isEmpty(accumulators)) {
-            throw new NotFoundException();
+            return new ArrayList<>();
         }
         List<StatisticsRepresentation> res = new ArrayList<>();
         accumulators.forEach(acc -> res.add(StatisticsRepresentation.builder()

@@ -1,7 +1,6 @@
 package com.project.hubert.testersmatcher.domain.repository;
 
 import com.project.hubert.testersmatcher.domain.model.TesterSummaryAccumulator;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -67,17 +66,29 @@ public class BugsRepositoryTest {
     @Test
     public void shouldFilterByDevicesTest() {
         //when
-        List<TesterSummaryAccumulator> res = bugsRepository.findBugsByTesterCountryIdsAndDeviceIds(null, Arrays.asList("iPhone5", "iPhone6"));
+        List<TesterSummaryAccumulator> res = bugsRepository.findBugsByTesterCountryIdsAndDeviceIds(null, Arrays.asList("iPhone4", "iPhone6"));
 
         //then
         assertThat(res).isNotNull();
         assertThat(res.size()).isEqualTo(3);
         assertThat(res.get(0).getTesterFirstName()).isEqualTo("User4");
         assertThat(res.get(0).getBugsCount()).isEqualTo(7L);
-        assertThat(res.get(1).getTesterFirstName()).isEqualTo("User1");
+        assertThat(res.get(1).getTesterFirstName()).isEqualTo("User3");
         assertThat(res.get(1).getBugsCount()).isEqualTo(4L);
-        assertThat(res.get(2).getTesterFirstName()).isEqualTo("User3");
-        assertThat(res.get(2).getBugsCount()).isEqualTo(4L);
+        assertThat(res.get(2).getTesterFirstName()).isEqualTo("User1");
+        assertThat(res.get(2).getBugsCount()).isEqualTo(2L);
+    }
+
+    @Test
+    public void shouldFilterByCountriesAndDevicesTest() {
+        //when
+        List<TesterSummaryAccumulator> res = bugsRepository.findBugsByTesterCountryIdsAndDeviceIds(Collections.singletonList("US"), Arrays.asList("iPhone4", "iPhone6"));
+
+        //then
+        assertThat(res).isNotNull();
+        assertThat(res.size()).isEqualTo(1);
+        assertThat(res.get(0).getTesterFirstName()).isEqualTo("User1");
+        assertThat(res.get(0).getBugsCount()).isEqualTo(2L);
     }
 
     private void initData() {
@@ -86,7 +97,6 @@ public class BugsRepositoryTest {
         initTesters();
         initTesterDevices();
         initBugs();
-        ;
     }
 
     private void initCountries() {
@@ -98,7 +108,7 @@ public class BugsRepositoryTest {
     }
 
     private void initDevices() {
-        List<String> names = Arrays.asList("iPhone4", "iPhone5", "iPhone46");
+        List<String> names = Arrays.asList("iPhone4", "iPhone5", "iPhone6");
         for (int i = 0; i < names.size(); i++) {
             em.createNativeQuery("INSERT INTO device(id, description) VALUES (?, ?)")
                     .setParameter(1, i + 1).setParameter(2, names.get(i)).executeUpdate();

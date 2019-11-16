@@ -41,6 +41,9 @@ public class CsvColumnsReaderImpl implements CsvColumnsReader {
                     } else {
                         for (int i = 0; i < headerNames.size(); i++) {
                             String value = tokenized.length > i ? tokenized[i] : null;
+                            if (StringUtils.isBlank(value)) {
+                                value = null;
+                            }
                             row.put(headerNames.get(i), value);
                         }
                         result.add(row);

@@ -8,6 +8,7 @@ import com.project.hubert.testersmatcher.services.StatisticService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,14 +31,14 @@ public class StatisticServiceImpl implements StatisticService {
         List<Long> foundTesters = CollectionUtils.isEmpty(res) ? null :
                 res.stream().map(TesterSummaryAccumulator::getTesterId).collect(Collectors.toList());
         //add testers that has no matches in result, but fulfill the countries
-        List<Tester> testersForCountries = testersRepository.getByCountryCodesAndExclude(countryCodes, foundTesters);
+        List<Tester> testersForCountries = testersRepository.getByCountryCodesAndExclude(countries, foundTesters);
         if (testersForCountries != null) {
             testersForCountries.forEach(tester -> {
                 TesterSummaryAccumulator acc = new TesterSummaryAccumulator(tester.getTesterId(), tester.getFirstName(),
-                        tester.getLastName(), tester.getCountry().getCountryCode(), 0L, 0L);
+                        tester.getLastName(), tester.getCountry() != null ? tester.getCountry().getCountryCode() : null, 0L, 0L);
                 res.add(acc);
             });
         }
-        return res;
+        return res == null ? new ArrayList<>() : res;
     }
 }
