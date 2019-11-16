@@ -1,3 +1,6 @@
+[![CircleCI](https://circleci.com/gh/hubson87/testers-matcher.svg?style=svg)](https://circleci.com/gh/hubson87/testers-matcher)
+[![codecov](https://codecov.io/gh/hubson87/testers-matcher/branch/master/graph/badge.svg)](https://codecov.io/gh/hubson87/testers-matcher)
+
 ##About the project
 In the project I've assumed, that in the future it should be disconnected from the CSV files and connected directly to the database.
 That's why I'm initializing the database with inserts at application startup.
