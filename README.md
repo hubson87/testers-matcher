@@ -21,7 +21,7 @@ Then he needs to enter the main folder and type:
 `mvnw clean package` (it will run maven wrapper and build the application)
 
 Then
-`mvn spring-boot:run`
+`mvnw spring-boot:run`
 
 It will start the spring boot server at port 8080
 
