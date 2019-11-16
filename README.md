@@ -16,9 +16,9 @@ Project structure is really simple, as there was no reason to split controllers 
 Project has been connected to CircleCI for continuous integration and codecov, to show the code tests coverage
 
 ##Build and run project
-To build the project, user needs to have newest version of maven and JDK11 installed.
+To build the project, user needs to have JDK11 installed.
 Then he needs to enter the main folder and type:
-`mvn clean package` (or `mvnw` if user is using maven wrapper)
+`mvnw clean package` (it will run maven wrapper and build the application)
 
 Then
 `mvn spring-boot:run`
